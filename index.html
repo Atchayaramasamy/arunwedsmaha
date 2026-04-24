@@ -64,116 +64,41 @@
       </div>
 
       <button class="cover__tapArea" type="button" id="openInvitationBtn" aria-label="Tap to open invitation">
-        <span class="cover__tapHint">Tap to open</span>
+        <span class="cover__tapHint" id="coverHint">Tap to open</span>
       </button>
     </div>
 
     <main class="page" id="invitationContent" aria-hidden="true">
       <header class="hero" id="top">
-        <div class="hero__content">
-          <p class="eyebrow" id="familyLine">
-            With the blessings of our beloved parents and family, we request your gracious presence to celebrate this joyous occasion.
-          </p>
-          <h1 class="names">
-            <span id="brideName">Mahalakshmi</span>
-            <span class="amp">&</span>
-            <span id="groomName">Arun</span>
-          </h1>
-          <p class="tagline" id="invitationLine">
-            Together with their families, Arun & Mahalakshmi invite you to join their wedding celebration.
-          </p>
+        <div class="hero__poster">
+          <img id="mainInvitationImg" src="./assets/img/arunmaha-english.png" alt="Wedding Invitation" loading="eager" />
+        </div>
 
-          <div class="heroChapters">
-            <div class="chapterCard">
-              <p class="chapterCard__kicker">Save the date</p>
-              <p class="chapterCard__big" id="weddingDateText">Sunday, 18 May 2026</p>
-              <p class="chapterCard__sub" id="loveLine">Two hearts, one journey, one beautiful beginning…</p>
-            </div>
+        <section class="hero__quote">
+          <p id="heroQuoteText" class="heroQuoteText">Spare us a day of yours to make our day special</p>
+        </section>
 
-            <div class="whenWhere">
-              <div class="infoCard">
-                <p class="infoCard__label">Muhurtham</p>
-                <p class="infoCard__value" id="weddingTimeText">6:00 AM – 7:30 AM</p>
-              </div>
-              <div class="infoCard">
-                <p class="infoCard__label">Venue</p>
-                <p class="infoCard__value" id="venueNameText">Eshwari Mahal A/C, Thirumullaivoyal, Chennai</p>
-              </div>
-            </div>
-          </div>
+        <section class="countdown" aria-label="Wedding countdown">
+          <h2 class="sectionTitle" id="countdownTitle">Counting days for our big moment</h2>
+          <div id="time" class="countdown__grid" aria-live="polite"></div>
+          <p class="countdown__note" id="countdownNote">We can’t wait to celebrate with you.</p>
+        </section>
 
+        <section class="section section--invitation" id="invitation-download">
+          <h2 class="sectionTitle" id="invitationSectionTitle">Invitation</h2>
           <div class="ctaRow">
-            <button class="btn btn--primary" type="button" data-open-rsvp>RSVP</button>
-            <a class="btn btn--ghost" id="venueLink" href="#" target="_blank" rel="noreferrer"
-              >View venue</a
-            >
-            <div class="calWrap">
-              <button class="btn btn--ghost" type="button" id="addToCalendarBtn" aria-haspopup="dialog" aria-expanded="false">
-                Add to calendar
-              </button>
-              <div class="calMenu" id="calMenu" role="dialog" aria-label="Add to calendar options">
-                <button class="calMenu__close" type="button" id="calMenuClose" aria-label="Close">×</button>
-                <p class="calMenu__title" id="calMenuTitle">Add to Calendar</p>
-                <label class="field">
-                  <span class="field__label" id="calChooseEventLabel">Choose event</span>
-                  <select class="calSelect" id="calEventSelect" aria-label="Choose event">
-                    <option value="wedding">Wedding (Muhurtham)</option>
-                    <option value="engagement">Engagement</option>
-                    <option value="reception">Reception</option>
-                    <option value="dinner">Dinner</option>
-                    <option value="breakfast">Breakfast</option>
-                  </select>
-                </label>
-                <div class="calMenu__actions">
-                  <a class="btn btn--primary" id="calIcsLink" href="#" download>Add (.ics)</a>
-                  <a class="btn btn--ghost" id="calGoogleLink" href="#" target="_blank" rel="noreferrer">Google Calendar</a>
-                </div>
-                <p class="fineprint" id="calTip">Tip: iPhone/Android users can open the .ics to add it to upcoming events.</p>
-              </div>
-            </div>
+            <a class="btn btn--primary" id="downloadInvitationBtn" href="./assets/img/arunmaha-english.jpg" download="Arun_Maha_Invitation.jpg">Download invitation</a>
+            <button class="btn btn--secondary-outlined" type="button" id="saveToCalendarBtn">Save to calendar</button>
           </div>
+        </section>
 
-          <section class="countdown" aria-label="Wedding countdown">
-            <h2 class="sectionTitle" id="countdownTitle">Counting days for our big moment</h2>
-            <div id="time" class="countdown__grid" aria-live="polite"></div>
-            <p class="countdown__note" id="countdownNote">We can’t wait to celebrate with you.</p>
-          </section>
-        </div>
-
-        <figure class="hero__photo">
-          <img
-            src="./assets/img/couple.png"
-            alt="Couple photo"
-            loading="eager"
-          />
-        </figure>
+        <section class="section section--map" id="map-location">
+          <h2 class="sectionTitle" id="mapSectionTitle">Location</h2>
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242.85102120759524!2d80.13212126075989!3d13.123474186598582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5262f8721ffbbd%3A0x5a98459e442ce631!2sEaswari%20Mahal!5e0!3m2!1sen!2sin!4v1777014651694!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </section>
       </header>
-
-      <section class="section section--story" id="story">
-        <div class="storyGrid">
-          <div class="storyQuote">
-            <p class="storyQuote__mark">“</p>
-            <p class="storyQuote__text" id="storyLine">
-              Kindly join us as we begin our forever, surrounded by the love of family and friends.
-            </p>
-            <p class="storyQuote__by">Arun &amp; Mahalakshmi</p>
-          </div>
-          <div class="storySteps">
-            <div class="step">
-              <p class="step__title" id="step1Title">Your presence</p>
-              <p class="step__text" id="step1Text">Means the world to us. Come bless our new beginning.</p>
-            </div>
-            <div class="step">
-              <p class="step__title" id="step2Title">Celebrate together</p>
-              <p class="step__text" id="step2Text">Engagement, reception, and the sacred muhurtham moments.</p>
-            </div>
-            <div class="step">
-              <p class="step__title" id="step3Title">Make it easy</p>
-              <p class="step__text" id="step3Text">RSVP and add events to your calendar in one tap.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section class="section" id="events">
         <div class="sectionHead">
@@ -184,27 +109,27 @@
         <div class="timeline">
           <div class="timelineDay">
             <p class="timelineDay__date">May 17, 2026</p>
-            <p class="timelineDay__label">Saturday</p>
+            <p class="timelineDay__label" id="day1Label">Saturday</p>
           </div>
           <div class="timelineItems">
             <div class="tItem">
               <span class="tDot" aria-hidden="true"></span>
               <div class="tBody">
-                <p class="tTitle">Engagement</p>
+                <p class="tTitle" id="evtEngagement">Engagement</p>
                 <p class="tTime">3:30 PM – 4:30 PM</p>
               </div>
             </div>
             <div class="tItem">
               <span class="tDot" aria-hidden="true"></span>
               <div class="tBody">
-                <p class="tTitle">Reception</p>
+                <p class="tTitle" id="evtReception">Reception</p>
                 <p class="tTime">6:30 PM onwards</p>
               </div>
             </div>
             <div class="tItem">
               <span class="tDot" aria-hidden="true"></span>
               <div class="tBody">
-                <p class="tTitle">Dinner</p>
+                <p class="tTitle" id="evtDinner">Dinner</p>
                 <p class="tTime">7:00 PM onwards</p>
               </div>
             </div>
@@ -214,20 +139,20 @@
         <div class="timeline">
           <div class="timelineDay">
             <p class="timelineDay__date">May 18, 2026</p>
-            <p class="timelineDay__label">Sunday</p>
+            <p class="timelineDay__label" id="day2Label">Sunday</p>
           </div>
           <div class="timelineItems">
             <div class="tItem tItem--highlight">
               <span class="tDot" aria-hidden="true"></span>
               <div class="tBody">
-                <p class="tTitle">Muhurtham</p>
+                <p class="tTitle" id="evtMuhurtham">Muhurtham</p>
                 <p class="tTime">6:00 AM – 7:30 AM</p>
               </div>
             </div>
             <div class="tItem">
               <span class="tDot" aria-hidden="true"></span>
               <div class="tBody">
-                <p class="tTitle">Breakfast</p>
+                <p class="tTitle" id="evtBreakfast">Breakfast</p>
                 <p class="tTime">7:30 AM – 9:00 AM</p>
               </div>
             </div>

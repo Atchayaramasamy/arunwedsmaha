@@ -459,7 +459,7 @@ img {
 	display: grid;
 	place-items: center;
 	padding: 18px;
-	background: radial-gradient(900px 520px at 50% 20%, rgba(255, 255, 255, 0.88), rgba(251, 247, 255, 0.72) 45%, rgba(255, 255, 255, 0.9) 100%);
+	background: var(--bg);
 }
 
 .cover.is-hidden {
@@ -485,6 +485,12 @@ img {
 	place-items: center;
 }
 
+.cover.is-fading-out {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 800ms ease;
+}
+
 .cover__paper {
 	position: absolute;
 	top: 6%;
@@ -492,14 +498,19 @@ img {
 	right: 7%;
 	height: 66%;
 	border-radius: 18px;
-	background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.94);
 	border: 1px solid rgba(0, 0, 0, 0.06);
 	box-shadow: 0 22px 70px rgba(0, 0, 0, 0.18);
 	transform-origin: 50% 100%;
-	transform: translateY(16%) scaleY(0.22);
-	transition: transform 1250ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 1250ms ease;
-	overflow: hidden;
+	transform: translateY(10%);
+	opacity: 0;
+	transition: transform 300ms ease-out, opacity 300ms ease;
+	z-index: 2;
 	will-change: transform, opacity;
+}
+
+.cover__paper.is-dragging {
+	transition: none !important;
 }
 
 .cover__paper::before {
@@ -629,30 +640,45 @@ img {
 	color: var(--primary);
 	font-weight: 700;
 	box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+	transition: opacity 300ms ease;
+}
+
+.cover.is-opening .cover__tapArea {
+	pointer-events: none;
 }
 
 .cover.is-opening .cover__flap {
 	transform: perspective(900px) rotateX(-155deg);
+	transition: transform 600ms cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
 .cover.is-opening .cover__seal {
 	transform: translate(-50%, -50%) scale(0.72);
 	opacity: 0;
+	transition: transform 600ms ease, opacity 600ms ease;
 }
 
 .cover.is-opening .cover__paper {
-	transform: translateY(-14%) scaleY(1);
+	transform: translateY(-8%);
 	opacity: 1;
+	transition: transform 600ms cubic-bezier(0.2, 0.9, 0.2, 1) 400ms, opacity 600ms ease 400ms;
+	cursor: grab;
+	z-index: 10;
 }
 
-.cover.is-opening {
-	animation: coverFade 1350ms ease forwards;
+.cover.is-opening .cover__paper:active {
+	cursor: grabbing;
 }
 
-@keyframes coverFade {
-	to {
-		opacity: 0;
-	}
+.cover.is-locked .cover__paper {
+	transform: translateY(-60vh) scale(1.1) !important;
+	transition: transform 700ms cubic-bezier(0.2, 0.9, 0.2, 1) !important;
+}
+
+.cover.is-fading-out {
+	opacity: 0;
+	transition: opacity 800ms ease;
+	pointer-events: none;
 }
 
 .musicToggle {
@@ -787,17 +813,51 @@ img {
 
 .hero {
 	position: relative;
-	display: grid;
-	grid-template-columns: 1.05fr 0.95fr;
-	gap: 24px;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	padding: 22px;
-	background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.62));
-	border: 1px solid rgba(103, 78, 167, 0.12);
-	border-radius: calc(var(--radius) + 6px);
-	box-shadow: var(--shadow);
-	backdrop-filter: blur(12px);
+	gap: 16px;
+	padding: 0;
 	z-index: 2;
+}
+
+.hero__poster {
+	width: 100%;
+	max-width: 500px;
+	display: flex;
+	justify-content: center;
+}
+
+.hero__poster img {
+	width: 100%;
+	border-radius: 12px;
+}
+
+.hero__quote {
+	max-width: 90%;
+}
+
+.heroQuoteText {
+	font-family: "Arvo", serif;
+	font-size: clamp(20px, 4vw, 24px);
+	color: var(--primary);
+	text-align: center;
+	margin: 0;
+	line-height: 1.4;
+}
+
+.map-wrapper {
+	width: 100%;
+	border-radius: 18px;
+	overflow: hidden;
+	box-shadow: var(--shadow);
+	margin-top: 16px;
+	background: #eee;
+}
+
+.map-wrapper iframe {
+	display: block;
+	border: 0;
 }
 
 .hero__content {
@@ -979,6 +1039,20 @@ img {
 
 .btn--ghost:hover {
 	background: rgba(255, 255, 255, 0.85);
+	border-color: rgba(103, 78, 167, 0.3);
+}
+
+.btn--secondary-outlined {
+	background: transparent;
+	border: 1px solid var(--primary);
+	color: var(--primary);
+	box-shadow: 0 4px 12px rgba(103, 78, 167, 0.1);
+}
+
+.btn--secondary-outlined:hover {
+	background: rgba(103, 78, 167, 0.05);
+	border-color: var(--primary);
+	transform: translateY(-1px);
 }
 
 .calWrap {
@@ -1193,7 +1267,7 @@ img {
 }
 
 .timeBlock__value {
-	font-size: 28px;
+	font-size: 22px;
 	font-weight: 700;
 	line-height: 1;
 }

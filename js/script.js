@@ -62,39 +62,61 @@ var EVENTS = {
 var I18N = {
     en: {
         langToggle: "தமிழ்",
+        heroQuoteShort: "Spare us a day of yours to make our day special",
+        invitationSectionTitle: "Invitation",
+        downloadInvitationBtn: "Download invitation",
+        saveToCalendarBtn: "Save to calendar",
+        mapSectionTitle: "Location",
+        countdownTitle: "Counting days for our big moment",
         countdownNote: "We can’t wait to celebrate with you.",
         eventsTitle: "The celebrations",
         eventsSub: "A two-day gathering filled with love, laughter, and blessings.",
-        step1Title: "Your presence",
-        step1Text: "Means the world to us. Come bless our new beginning.",
-        step2Title: "Celebrate together",
-        step2Text: "Engagement, reception, and the sacred muhurtham moments.",
-        step3Title: "Make it easy",
-        step3Text: "RSVP and add events to your calendar in one tap.",
+        day1Label: "Saturday",
+        day2Label: "Sunday",
+        evtEngagement: "Engagement",
+        evtReception: "Reception",
+        evtDinner: "Dinner",
+        evtMuhurtham: "Muhurtham",
+        evtBreakfast: "Breakfast",
         calMenuTitle: "Add to Calendar",
         calChooseEventLabel: "Choose event",
         calTip: "Tip: iPhone/Android users can open the .ics to add it to upcoming events.",
         addToCalendarBtn: "Add to calendar",
         rsvpBtn: "RSVP",
-        viewVenueBtn: "View venue"
+        viewVenueBtn: "View venue",
+        familyTitle: "Family details",
+        groomLabel: "Groom",
+        brideLabel: "Bride",
+        rsvpTitle: "RSVP"
     },
     ta: {
         langToggle: "English",
+        heroQuoteShort: "எங்கள் வாழ்வின் இனிய நாளில் உங்கள் வருகையை அன்புடன் எதிர்பார்க்கிறோம்",
+        invitationSectionTitle: "அழைப்பிதழ்",
+        downloadInvitationBtn: "அழைப்பிதழை பதிவிறக்குக",
+        saveToCalendarBtn: "நாட்காட்டியில் சேமிக்கவும்",
+        mapSectionTitle: "இடம்",
+        countdownTitle: "நிகழ்விற்கு இன்னும் மீதமுருப்பவை",
         countdownNote: "உங்களுடன் இந்த மகிழ்ச்சித் தருணத்தை கொண்டாட ஆவலாக இருக்கிறோம்.",
         eventsTitle: "விழா நிகழ்ச்சிகள்",
         eventsSub: "இரு நாட்கள் நடைபெறும் இந்நிகழ்வில் உங்கள் ஆசீர்வாதமும் பங்கேற்பும் வேண்டுகின்றோம்.",
-        step1Title: "உங்கள் வருகை",
-        step1Text: "எங்களுக்கு மிகப் பெரிய ஆசீர்வாதம். எங்கள் புதிய தொடக்கத்தை ஆசீர்வதிக்க வாருங்கள்.",
-        step2Title: "ஒன்றாகக் கொண்டாடுவோம்",
-        step2Text: "நிச்சயதார்த்தம், வரவேற்பு மற்றும் புனித முகூர்த்த தருணங்கள்.",
-        step3Title: "ஒரே கிளிக்கில்",
-        step3Text: "RSVP செய்யவும், நிகழ்வுகளை உங்கள் காலண்டரில் சேர்க்கவும்.",
+        day1Label: "சனிக்கிழமை",
+        day2Label: "ஞாயிற்றுக்கிழமை",
+        evtEngagement: "நிச்சயதார்த்தம்",
+        evtReception: "வரவேற்பு",
+        evtDinner: "இரவு உணவு",
+        evtMuhurtham: "முகூர்த்தம்",
+        evtBreakfast: "காலை உணவு",
         calMenuTitle: "காலண்டரில் சேர்க்கவும்",
         calChooseEventLabel: "நிகழ்வைத் தேர்வு செய்யவும்",
         calTip: "குறிப்பு: iPhone/Android-ல் .ics கோப்பை திறந்து Upcoming Events-க்கு சேர்க்கலாம்.",
         addToCalendarBtn: "காலண்டரில் சேர்க்க",
         rsvpBtn: "RSVP",
-        viewVenueBtn: "இடத்தைப் பார்க்க"
+        viewVenueBtn: "இடத்தைப் பார்க்க",
+        familyTitle: "குடும்ப விவரங்கள்",
+        groomLabel: "மணமகன்",
+        brideLabel: "மணமகள்",
+        rsvpTitle: "RSVP"
     }
 };
 
@@ -105,26 +127,51 @@ function applyLanguage(lang) {
     var t = I18N[currentLang];
     setText("eventsTitle", t.eventsTitle);
     setText("eventsSub", t.eventsSub);
+    setText("day1Label", t.day1Label);
+    setText("day2Label", t.day2Label);
+    setText("evtEngagement", t.evtEngagement);
+    setText("evtReception", t.evtReception);
+    setText("evtDinner", t.evtDinner);
+    setText("evtMuhurtham", t.evtMuhurtham);
+    setText("evtBreakfast", t.evtBreakfast);
+
+    setText("countdownTitle", t.countdownTitle);
     setText("countdownNote", t.countdownNote);
-    setText("step1Title", t.step1Title);
-    setText("step1Text", t.step1Text);
-    setText("step2Title", t.step2Title);
-    setText("step2Text", t.step2Text);
-    setText("step3Title", t.step3Title);
-    setText("step3Text", t.step3Text);
+    setText("heroQuoteText", t.heroQuoteShort);
+    setText("invitationSectionTitle", t.invitationSectionTitle);
+    setText("mapSectionTitle", t.mapSectionTitle);
+    
+    var downloadBtn = document.getElementById("downloadInvitationBtn");
+    if (downloadBtn) {
+        downloadBtn.textContent = t.downloadInvitationBtn;
+        downloadBtn.setAttribute("href", currentLang === "ta" ? "./assets/img/arunmaha-tamil.png" : "./assets/img/arunmaha-english.png");
+    }
+
+    var calendarBtn = document.getElementById("saveToCalendarBtn");
+    if (calendarBtn) calendarBtn.textContent = t.saveToCalendarBtn;
+
+    var posterImg = document.getElementById("mainInvitationImg");
+    if (posterImg) {
+        posterImg.src = currentLang === "ta" ? "./assets/img/arunmaha-tamil.png" : "./assets/img/arunmaha-english.png";
+    }
+
     setText("calMenuTitle", t.calMenuTitle);
     setText("calChooseEventLabel", t.calChooseEventLabel);
     setText("calTip", t.calTip);
     var addBtn = document.getElementById("addToCalendarBtn");
     if (addBtn) addBtn.textContent = t.addToCalendarBtn;
-    var venueLink = document.getElementById("venueLink");
-    if (venueLink) venueLink.textContent = t.viewVenueBtn;
-    var rsvpOpeners = document.querySelectorAll("[data-open-rsvp]");
-    rsvpOpeners.forEach(function (b) {
-        if (b && b.tagName === "BUTTON" && b.textContent.trim().toLowerCase() === "rsvp") {
-            b.textContent = t.rsvpBtn;
-        }
-    });
+    
+    // Family & Footer
+    var familyTitle = document.querySelector("#family .sectionTitle");
+    if (familyTitle) familyTitle.textContent = t.familyTitle;
+    var cards = document.querySelectorAll("#family .card__title");
+    if (cards.length >= 2) {
+        cards[0].textContent = t.groomLabel;
+        cards[1].textContent = t.brideLabel;
+    }
+    var rsvpTitle = document.querySelector("#rsvp .sectionTitle");
+    if (rsvpTitle) rsvpTitle.textContent = t.rsvpTitle;
+
     var langBtn = document.getElementById("langToggle");
     if (langBtn) langBtn.textContent = t.langToggle;
     document.documentElement.setAttribute("lang", currentLang === "ta" ? "ta" : "en");
@@ -523,7 +570,7 @@ function initInvitationCover() {
     if (!cover || !content || !openBtn) return;
 
     function showContent() {
-        cover.classList.add("is-hidden");
+        cover.style.display = "none";
         content.removeAttribute("aria-hidden");
         document.body.classList.remove("is-locked");
     }
@@ -533,20 +580,21 @@ function initInvitationCover() {
         document.body.classList.add("is-locked");
     }
 
-    // Keep cover text in sync
-    setText("coverNamesText", (WEDDING.groomName || "Arun") + " & " + (WEDDING.brideName || "Mahalakshmi"));
-    setText("coverDate", WEDDING.weddingDateText);
-    setText("coverMonogram", (WEDDING.groomName || "A").charAt(0).toUpperCase() + (WEDDING.brideName || "M").charAt(0).toUpperCase());
-
     showCover();
 
     openBtn.addEventListener("click", function () {
-        cover.classList.add("is-opening");
+        cover.classList.add("is-fading-out");
+
+        var audio = document.getElementById("my_audio");
+        if (audio && audio.paused) {
+            audio.play().catch(function () {});
+            try { localStorage.setItem("wedding_music_preference_v1", "yes"); } catch(e){}
+        }
 
         window.setTimeout(function () {
             showContent();
-            cover.classList.remove("is-opening");
-        }, 1450);
+            cover.classList.remove("is-fading-out");
+        }, 800);
     });
 }
 
@@ -591,5 +639,14 @@ initCountdown();
 initCalendarMenu();
 initRsvpModal();
 initRsvp();
-initMusicPreference();
 initMusicToggle();
+
+(function() {
+    var saveToCalendarBtn = document.getElementById("saveToCalendarBtn");
+    if (saveToCalendarBtn) {
+        saveToCalendarBtn.addEventListener("click", function() {
+            var evt = EVENTS.engagement; // Save for 17th May
+            window.open(buildGoogleCalendarUrl(evt), "_blank", "noreferrer");
+        });
+    }
+})();
