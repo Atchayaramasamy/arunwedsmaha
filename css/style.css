@@ -878,9 +878,9 @@ img {
 
 .sticky-footer {
 	position: fixed;
-	bottom: -15px;
+	bottom: -35px;
 	left: -20px;
-	width: min(220px, 50vw);
+	width: min(280px, 60vw);
 	z-index: 100;
 	pointer-events: none;
 	opacity: 0;
@@ -890,8 +890,8 @@ img {
 
 @media (max-width: 600px) {
     .sticky-footer {
-        width: 150px;
-        bottom: -10px;
+        width: 180px;
+        bottom: -25px;
         left: -15px;
     }
 }
