@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Dancing+Script:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
@@ -53,7 +53,7 @@
           <div class="cover__paperInner">
             <p class="cover__paperSmall">Wedding Invitation</p>
             <p class="cover__paperNames" id="coverNamesText">Arun &amp; Mahalakshmi</p>
-            <p class="cover__paperDate" id="coverDate">Sunday, 18 May 2026</p>
+            <p class="cover__paperDate" id="coverDate">Monday, 18 May 2026</p>
           </div>
         </div>
         <div class="cover__body"></div>
@@ -69,35 +69,33 @@
     </div>
 
     <main class="page" id="invitationContent" aria-hidden="true">
-      <header class="hero" id="top">
-        <div class="hero__god">
-          <img src="./assets/img/god.png" alt="Blessings" loading="eager" />
-        </div>
+    <header class="hero section" id="top">
+      <div class="hero__god">
+        <img src="./assets/img/god.png" alt="Blessings" loading="eager" />
+      </div>
 
-        <div class="hero__poster">
-          <img id="mainInvitationImg" src="./assets/img/arunmaha-english.png" alt="Wedding Invitation" loading="eager" />
-        </div>
+      <div class="hero__poster">
+        <img id="mainInvitationImg" src="./assets/img/arunmaha-english.png" alt="Wedding Invitation" loading="eager" />
+      </div>
 
-        <section class="hero__quote">
-          <p id="heroQuoteText" class="heroQuoteText">Spare us a day of yours to make our day special</p>
-        </section>
+      <section class="hero__quote">
+        <p id="heroQuoteText" class="heroQuoteText">Spare us a day of yours to make our day special</p>
+      </section>
+    </header>
 
-        <section class="section countdown" aria-label="Wedding countdown">
-          <h2 class="sectionTitle" id="countdownTitle">Counting days for our big moment</h2>
-          <div id="time" class="countdown__grid" aria-live="polite"></div>
-          <p class="countdown__note" id="countdownNote">We can’t wait to celebrate with you.</p>
-        </section>
+    <section class="section countdown" aria-label="Wedding countdown">
+      <h2 class="sectionTitle" id="countdownTitle">Counting days for our big moment</h2>
+      <div id="time" class="countdown__grid" aria-live="polite"></div>
+      <p class="countdown__note" id="countdownNote">We can’t wait to celebrate with you.</p>
+    </section>
 
-        <section class="section section--invitation" id="invitation-download">
-          <h2 class="sectionTitle" id="invitationSectionTitle">Invitation</h2>
-          <div class="ctaRow">
-            <a class="btn btn--primary" id="downloadInvitationBtn" href="./pdf/colored_wedding_invitation.pdf" download="Arun_Maha_Invitation.pdf">Download invitation</a>
-            <button class="btn btn--secondary-outlined" type="button" id="saveToCalendarBtn">Save to calendar</button>
-          </div>
-        </section>
-
-        </section>
-      </header>
+    <section class="section section--invitation" id="invitation-download">
+      <h2 class="sectionTitle" id="invitationSectionTitle">Invitation</h2>
+      <div class="ctaRow">
+        <a class="btn btn--primary" id="downloadInvitationBtn" href="./pdf/colored_wedding_invitation.pdf" download="Arun_Maha_Invitation.pdf">Download invitation</a>
+        <button class="btn btn--secondary-outlined" type="button" id="saveToCalendarBtn">Save to calendar</button>
+      </div>
+    </section>
 
       <div class="sticky-footer" id="stickyFooter">
         <img src="./assets/img/arunmaha-engagement.png" alt="Engagement" />
@@ -112,7 +110,7 @@
         <div class="timeline">
           <div class="timelineDay">
             <p class="timelineDay__date">May 17, 2026</p>
-            <p class="timelineDay__label" id="day1Label">Saturday</p>
+            <p class="timelineDay__label" id="day1Label">Sunday</p>
           </div>
           <div class="timelineItems">
             <div class="tItem">
@@ -142,7 +140,7 @@
         <div class="timeline">
           <div class="timelineDay">
             <p class="timelineDay__date">May 18, 2026</p>
-            <p class="timelineDay__label" id="day2Label">Sunday</p>
+            <p class="timelineDay__label" id="day2Label">Monday</p>
           </div>
           <div class="timelineItems">
             <div class="tItem tItem--highlight">
@@ -168,20 +166,6 @@
         </div>
       </section>
 
-      <section class="section" id="family">
-        <h2 class="sectionTitle">Family details</h2>
-        <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Groom</h3>
-            <p class="card__line" id="groomDetails">K. Arun Kumar, B.Sc., MCA</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Bride</h3>
-            <p class="card__line" id="brideDetails">M. Mahalakshmi, MCA</p>
-          </article>
-        </div>
-      </section>
-
         <section class="section section--map" id="map">
           <h2 class="sectionTitle" id="mapSectionTitle">Find Us Here</h2>
           <p class="sectionSub" id="venueAddressText">
@@ -196,30 +180,8 @@
           </div>
         </section>
 
-      <section class="section" id="rsvp">
-        <h2 class="sectionTitle">RSVP</h2>
-        <p class="sectionSub">
-          <span id="rsvpByText">Kindly confirm your presence. We look forward to celebrating with you ❤️</span>
-        </p>
 
-        <div class="ctaRow ctaRow--end">
-          <button class="btn btn--primary" type="button" data-open-rsvp>Open RSVP form</button>
-          <a class="btn btn--ghost" id="downloadCardLink" href="./pdf/colored_wedding_invitation.pdf" download="Arun_Maha_Invitation.pdf">Download invitation</a>
-        </div>
 
-        <p class="fineprint" id="rsvpHint">
-          RSVP opens a secure popup form. Submitting will open WhatsApp/SMS/Email on your phone.
-        </p>
-      </section>
-
-      <footer class="footer">
-        <p class="footer__text" id="footerText">
-          For more details: <span id="footerWebsite">www.ArunWedsMaha.in</span>
-        </p>
-        <p class="footer__contact">
-          For any queries, contact: <a id="contactLink" href="#">+91 90000 00000</a>
-        </p>
-      </footer>
     </main>
 
     <div class="musicPrompt" id="musicPrompt" role="dialog" aria-modal="false" aria-label="Music preference">
@@ -233,64 +195,6 @@
       </div>
     </div>
 
-    <div class="modal" id="rsvpModal" role="dialog" aria-modal="true" aria-label="RSVP form">
-      <div class="modal__overlay" data-close-modal></div>
-      <div class="modal__panel" role="document" aria-describedby="rsvpModalDesc">
-        <button class="modal__close" type="button" aria-label="Close" data-close-modal>
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h2 class="modal__title">RSVP</h2>
-        <p class="modal__desc" id="rsvpModalDesc">
-          Please share your details. We’ll confirm on WhatsApp/SMS/Email.
-        </p>
-
-        <form class="rsvp" id="rsvpForm">
-          <div class="fieldRow">
-            <label class="field">
-              <span class="field__label">Your name</span>
-              <input required type="text" name="name" autocomplete="name" placeholder="Full name" />
-            </label>
-            <label class="field">
-              <span class="field__label">Guests</span>
-              <input
-                required
-                type="number"
-                name="guests"
-                inputmode="numeric"
-                min="0"
-                value="1"
-              />
-            </label>
-          </div>
-
-          <fieldset class="field field--radio">
-            <legend class="field__label">Will you be attending?</legend>
-            <label class="radio">
-              <input type="radio" name="attending" value="Yes" checked />
-              <span>Yes, I’ll be there</span>
-            </label>
-            <label class="radio">
-              <input type="radio" name="attending" value="No" />
-              <span>Sorry, can’t make it</span>
-            </label>
-          </fieldset>
-
-          <label class="field">
-            <span class="field__label">Message (optional)</span>
-            <textarea name="message" rows="3" placeholder="Blessings / note for the couple"></textarea>
-          </label>
-
-          <div class="ctaRow ctaRow--end">
-            <button class="btn btn--primary" type="submit">Send RSVP</button>
-            <button class="btn btn--ghost" type="button" data-close-modal>Cancel</button>
-          </div>
-
-          <p class="fineprint">
-            Tip: If WhatsApp isn’t available, we’ll fall back to email or copy the message.
-          </p>
-        </form>
-      </div>
-    </div>
 
     <div class="music">
       <audio src="./assets/mp3/song.mp3" id="my_audio" loop="loop" preload="auto"></audio>

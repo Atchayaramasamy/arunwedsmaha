@@ -11,7 +11,7 @@ var WEDDING = {
     brideName: "Mahalakshmi",
     groomName: "Arun",
     weddingDateISO: "2026-05-18T06:00:00+05:30", // YYYY-MM-DDTHH:mm:ss+TZ
-    weddingDateText: "Sunday, 18 May 2026",
+    weddingDateText: "Monday, 18 May 2026",
     weddingTimeText: "6:00 AM – 7:30 AM",
     venueNameText: "Eshwari Mahal A/C, Thirumullaivoyal, Chennai",
     venueAddressText: "Eshwari Mahal A/C, Thirumullaivoyal, Chennai",
@@ -21,14 +21,7 @@ var WEDDING = {
     loveLine: "Two hearts, one journey, one beautiful beginning…",
     countdownTitle: "Counting days for our big moment",
     mapTitle: "Find Us Here",
-    groomDetails: "K. Arun Kumar, B.Sc., MCA",
-    brideDetails: "M. Mahalakshmi, MCA",
-    rsvpText: "Kindly confirm your presence. We look forward to celebrating with you ❤️",
-    footerWebsite: "www.ArunWedsMaha.in",
-    invitationDownloadUrl: "./invitation/Sonali & Gagan.pdf",
-    contactPhoneDisplay: "+91 90000 00000",
-    contactPhoneE164: "+919000000000", // for WhatsApp/SMS link
-    contactEmail: ""
+    invitationDownloadUrl: "./invitation/Sonali & Gagan.pdf"
 };
 
 var EVENTS = {
@@ -71,8 +64,8 @@ var I18N = {
         countdownNote: "We can’t wait to celebrate with you.",
         eventsTitle: "The celebrations",
         eventsSub: "A two-day gathering filled with love, laughter, and blessings.",
-        day1Label: "Saturday",
-        day2Label: "Sunday",
+        day1Label: "Sunday",
+        day2Label: "Monday",
         evtEngagement: "Engagement",
         evtReception: "Reception",
         evtDinner: "Dinner",
@@ -82,12 +75,6 @@ var I18N = {
         calChooseEventLabel: "Choose event",
         calTip: "Tip: iPhone/Android users can open the .ics to add it to upcoming events.",
         addToCalendarBtn: "Add to calendar",
-        rsvpBtn: "RSVP",
-        viewVenueBtn: "View venue",
-        familyTitle: "Family details",
-        groomLabel: "Groom",
-        brideLabel: "Bride",
-        rsvpTitle: "RSVP"
     },
     ta: {
         langToggle: "English",
@@ -100,8 +87,8 @@ var I18N = {
         countdownNote: "உங்களுடன் இந்த மகிழ்ச்சித் தருணத்தை கொண்டாட ஆவலாக இருக்கிறோம்.",
         eventsTitle: "விழா நிகழ்ச்சிகள்",
         eventsSub: "இரு நாட்கள் நடைபெறும் இந்நிகழ்வில் உங்கள் ஆசீர்வாதமும் பங்கேற்பும் வேண்டுகின்றோம்.",
-        day1Label: "சனிக்கிழமை",
-        day2Label: "ஞாயிற்றுக்கிழமை",
+        day1Label: "ஞாயிற்றுக்கிழமை",
+        day2Label: "திங்கட்கிழமை",
         evtEngagement: "நிச்சயதார்த்தம்",
         evtReception: "வரவேற்பு",
         evtDinner: "இரவு உணவு",
@@ -111,12 +98,6 @@ var I18N = {
         calChooseEventLabel: "நிகழ்வைத் தேர்வு செய்யவும்",
         calTip: "குறிப்பு: iPhone/Android-ல் .ics கோப்பை திறந்து Upcoming Events-க்கு சேர்க்கலாம்.",
         addToCalendarBtn: "காலண்டரில் சேர்க்க",
-        rsvpBtn: "RSVP",
-        viewVenueBtn: "இடத்தைப் பார்க்க",
-        familyTitle: "குடும்ப விவரங்கள்",
-        groomLabel: "மணமகன்",
-        brideLabel: "மணமகள்",
-        rsvpTitle: "RSVP"
     }
 };
 
@@ -140,7 +121,7 @@ function applyLanguage(lang) {
     setText("heroQuoteText", t.heroQuoteShort);
     setText("invitationSectionTitle", t.invitationSectionTitle);
     setText("mapSectionTitle", t.mapSectionTitle);
-    
+
     var downloadBtn = document.getElementById("downloadInvitationBtn");
     if (downloadBtn) {
         downloadBtn.textContent = t.downloadInvitationBtn;
@@ -160,17 +141,9 @@ function applyLanguage(lang) {
     setText("calTip", t.calTip);
     var addBtn = document.getElementById("addToCalendarBtn");
     if (addBtn) addBtn.textContent = t.addToCalendarBtn;
-    
-    // Family & Footer
-    var familyTitle = document.querySelector("#family .sectionTitle");
-    if (familyTitle) familyTitle.textContent = t.familyTitle;
-    var cards = document.querySelectorAll("#family .card__title");
-    if (cards.length >= 2) {
-        cards[0].textContent = t.groomLabel;
-        cards[1].textContent = t.brideLabel;
-    }
-    var rsvpTitle = document.querySelector("#rsvp .sectionTitle");
-    if (rsvpTitle) rsvpTitle.textContent = t.rsvpTitle;
+
+
+
 
     var langBtn = document.getElementById("langToggle");
     if (langBtn) langBtn.textContent = t.langToggle;
@@ -406,100 +379,7 @@ function initMusicToggle() {
     syncUi();
 }
 
-function buildRsvpMessage(data) {
-    var lines = [
-        "RSVP for " + WEDDING.brideName + " & " + WEDDING.groomName,
-        "",
-        "Name: " + data.name,
-        "Attending: " + data.attending,
-        "Guests: " + data.guests
-    ];
-    if (data.message) lines.push("Message: " + data.message);
-    return lines.join("\n");
-}
 
-function openBestRsvpTarget(message) {
-    var encoded = encodeURIComponent(message);
-    var phone = (WEDDING.contactPhoneE164 || "").replace(/[^\d+]/g, "");
-
-    // Prefer WhatsApp if configured
-    if (phone) {
-        var waPhone = phone.replace("+", "");
-        window.open("https://wa.me/" + waPhone + "?text=" + encoded, "_blank", "noreferrer");
-        return;
-    }
-
-    // Fall back to email if configured
-    if (WEDDING.contactEmail) {
-        window.location.href = "mailto:" + encodeURIComponent(WEDDING.contactEmail) + "?subject=" + encodeURIComponent("Wedding RSVP") + "&body=" + encoded;
-        return;
-    }
-
-    // Last resort: just copy to clipboard if possible
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(message).catch(function () { });
-        alert("RSVP message copied. Please send it to the couple.");
-    } else {
-        alert(message);
-    }
-}
-
-function initRsvp() {
-    var form = document.getElementById("rsvpForm");
-    if (!form) return;
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var fd = new FormData(form);
-        var data = {
-            name: String(fd.get("name") || "").trim(),
-            guests: String(fd.get("guests") || "0").trim(),
-            attending: String(fd.get("attending") || "Yes"),
-            message: String(fd.get("message") || "").trim()
-        };
-        var msg = buildRsvpMessage(data);
-        openBestRsvpTarget(msg);
-        closeRsvpModal();
-    });
-}
-
-function openRsvpModal() {
-    var modal = document.getElementById("rsvpModal");
-    if (!modal) return;
-    modal.classList.add("is-open");
-    document.body.style.overflow = "hidden";
-    var nameInput = modal.querySelector("input[name='name']");
-    if (nameInput) nameInput.focus();
-}
-
-function closeRsvpModal() {
-    var modal = document.getElementById("rsvpModal");
-    if (!modal) return;
-    modal.classList.remove("is-open");
-    document.body.style.overflow = "";
-}
-
-function initRsvpModal() {
-    var modal = document.getElementById("rsvpModal");
-    if (!modal) return;
-
-    var openers = document.querySelectorAll("[data-open-rsvp]");
-    openers.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            openRsvpModal();
-        });
-    });
-
-    modal.querySelectorAll("[data-close-modal]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            closeRsvpModal();
-        });
-    });
-
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") closeRsvpModal();
-    });
-}
 
 function initCalendarMenu() {
     var btn = document.getElementById("addToCalendarBtn");
@@ -587,8 +467,8 @@ function initInvitationCover() {
 
         var audio = document.getElementById("my_audio");
         if (audio && audio.paused) {
-            audio.play().catch(function () {});
-            try { localStorage.setItem("wedding_music_preference_v1", "yes"); } catch(e){}
+            audio.play().catch(function () { });
+            try { localStorage.setItem("wedding_music_preference_v1", "yes"); } catch (e) { }
         }
 
         window.setTimeout(function () {
@@ -608,28 +488,9 @@ function hydrateUi() {
     setHref("venueLink", WEDDING.venueMapUrl);
     setHref("mapLink", WEDDING.venueMapUrl);
     setText("venueAddressText", WEDDING.venueAddressText || WEDDING.venueNameText);
-    setText("rsvpByText", WEDDING.rsvpText);
-    setDownloadLink("downloadCardLink", WEDDING.invitationDownloadUrl);
-    setText("invitationLine", WEDDING.invitationLine);
-    setText("familyLine", WEDDING.familyLine);
-    setText("loveLine", WEDDING.loveLine);
-    setText("countdownTitle", WEDDING.countdownTitle);
     setText("mapTitle", WEDDING.mapTitle);
-    setText("groomDetails", WEDDING.groomDetails);
-    setText("brideDetails", WEDDING.brideDetails);
-    setText("footerWebsite", WEDDING.footerWebsite);
 
-    var contactLink = document.getElementById("contactLink");
-    if (contactLink) {
-        contactLink.textContent = WEDDING.contactPhoneDisplay;
-        if (WEDDING.contactPhoneE164) {
-            contactLink.setAttribute("href", "tel:" + WEDDING.contactPhoneE164.replace(/[^\d+]/g, ""));
-        } else if (WEDDING.contactEmail) {
-            contactLink.setAttribute("href", "mailto:" + encodeURIComponent(WEDDING.contactEmail));
-        } else {
-            contactLink.setAttribute("href", "#");
-        }
-    }
+
 }
 
 hydrateUi();
@@ -637,14 +498,13 @@ initLanguageToggle();
 initInvitationCover();
 initCountdown();
 initCalendarMenu();
-initRsvpModal();
-initRsvp();
+
 initMusicToggle();
 
-(function() {
+(function () {
     var saveToCalendarBtn = document.getElementById("saveToCalendarBtn");
     if (saveToCalendarBtn) {
-        saveToCalendarBtn.addEventListener("click", function() {
+        saveToCalendarBtn.addEventListener("click", function () {
             var evt = EVENTS.engagement; // Save for 17th May
             window.open(buildGoogleCalendarUrl(evt), "_blank", "noreferrer");
         });
