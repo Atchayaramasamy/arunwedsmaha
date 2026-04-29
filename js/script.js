@@ -514,13 +514,7 @@ initMusicToggle();
     if (saveToCalendarBtn) {
         saveToCalendarBtn.addEventListener("click", function () {
             var evt = EVENTS.engagement;
-            var icsUrl = buildIcsBlobUrl(evt);
-            var link = document.createElement("a");
-            link.href = icsUrl;
-            link.download = "Arun_Weds_Maha_Reminder.ics";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            window.open(buildGoogleCalendarUrl(evt), "_blank", "noreferrer");
         });
     }
 })();
