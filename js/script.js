@@ -21,7 +21,7 @@ var WEDDING = {
     loveLine: "Two hearts, one journey, one beautiful beginning…",
     countdownTitle: "Counting days for our big moment",
     mapTitle: "Find Us Here",
-    invitationDownloadUrl: "./invitation/Sonali & Gagan.pdf"
+    invitationDownloadUrl: "https://drive.google.com/file/d/1e1C7ZSj1L4Ux90nmaHneDb2RbtBODNrq/view?usp=sharing"
 };
 
 var EVENTS = {
@@ -57,7 +57,7 @@ var I18N = {
         langToggle: "தமிழ்",
         heroQuoteShort: "Spare us a day of yours to make our day special",
         invitationSectionTitle: "Invitation",
-        downloadInvitationBtn: "Download invitation",
+        downloadInvitationBtn: "Open invitation",
         saveToCalendarBtn: "Save to calendar",
         mapSectionTitle: "Location",
         countdownTitle: "Counting days for our big moment",
@@ -80,7 +80,7 @@ var I18N = {
         langToggle: "English",
         heroQuoteShort: "எங்கள் வாழ்வின் இனிய நாளில் உங்கள் வருகையை அன்புடன் எதிர்பார்க்கிறோம்",
         invitationSectionTitle: "அழைப்பிதழ்",
-        downloadInvitationBtn: "அழைப்பிதழை பதிவிறக்குக",
+        downloadInvitationBtn: "அழைப்பிதழைத் திறக்கவும்",
         saveToCalendarBtn: "நாட்காட்டியில் சேமிக்கவும்",
         mapSectionTitle: "இடம்",
         countdownTitle: "நிகழ்விற்கு இன்னும் மீதமுருப்பவை",
@@ -125,7 +125,10 @@ function applyLanguage(lang) {
     var downloadBtn = document.getElementById("downloadInvitationBtn");
     if (downloadBtn) {
         downloadBtn.textContent = t.downloadInvitationBtn;
-        downloadBtn.setAttribute("href", "./pdf/colored_wedding_invitation.pdf");
+        downloadBtn.setAttribute("href", WEDDING.invitationDownloadUrl);
+        downloadBtn.setAttribute("target", "_blank");
+        downloadBtn.setAttribute("rel", "noreferrer");
+        downloadBtn.removeAttribute("download");
     }
 
     var calendarBtn = document.getElementById("saveToCalendarBtn");
